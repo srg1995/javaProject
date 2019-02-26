@@ -1,29 +1,29 @@
 package com.sergio.prueba.web;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.sergio.prueba.dto.DatosDto;
 
-public class validatorForm implements Validator{
+@Component
+public class ValidatorForm implements Validator{
 	
-	public boolean supports(Class<?> clazz) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean supports(Class clazz) {
+        return DatosDto.class.equals(clazz);
+    }
+
+
+	public void validarNombre(DatosDto datosDto){
+
 	}
 
-	public void validate(Object datos, Errors errors) {
-		// TODO Auto-generated method stub
-		validarNombre(datos);
+
+	public void validate(Object target, Errors errors) {
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "required.nombre","Field name is required.");
 	}
 
-	public void validarNombre(Object object){
-		DatosDto datos = (DatosDto)object;
-		Pattern patron = Pattern.compile("[a-zA-Z]{5,10}");	
-		Matcher mat = patron.matcher(datos.getNombre());
-	}
+
 
 }
