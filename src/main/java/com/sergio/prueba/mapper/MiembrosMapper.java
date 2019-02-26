@@ -14,7 +14,7 @@ public interface MiembrosMapper {
 	
 	public void modNombre(DatosDto art);*/
 	
-	public void nuevoNombre(DatosDto art);
+	public void nuevoMiembro(DatosDto datos);
 	
 	
 }
