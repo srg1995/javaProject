@@ -4,11 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sergio.prueba.mapper.MiembrosMapper">
 	<cache />
-	<select id="getMiembros" resultType="com.sergio.prueba.dto.DatosDto">
+	<select id="getAllNombres" resultType="com.sergio.prueba.dto.DatosDto">
 		SELECT * FROM miembros
 	</select>
 	
-	<insert id="nuevo-miembro" parameterType="com.sergio.prueba.dto.DatosDto">
+	<insert id="nuevoMiembro" parameterType="com.sergio.prueba.dto.DatosDto">
 		INSERT INTO miembros(nombre, dni)VALUES (#{nombre},#{dni})
 	</insert>
 </mapper>

@@ -18,13 +18,18 @@
          margin: 16px;
       }
    </style>
-<form:form action="apellido" method="POST" modelAttribute="datos" path="datos" enctype="multipart/form-data" commandName="datosDto">
-	<form:input id="nombre" path="nombre" />
-	<form:errors path="*" cssClass = "error"/>
-	<form:input id="apellido" path="apellidos" />
-	
-	<form:errors path="*" class="has-error" />
-	<form:button value="enviar" >enviar</form:button>
-</form:form>
+   
+   
+
+
+<c:forEach var="campos" items="${nombres}">   
+    <tr>
+      <td>
+            ${campos.dni}    
+      </td>
+    </tr>
+  </c:forEach>
+  
+
 </body>
 </html>

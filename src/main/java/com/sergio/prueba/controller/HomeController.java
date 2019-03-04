@@ -1,5 +1,6 @@
 package com.sergio.prueba.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,18 +35,20 @@ public class HomeController {
 	private MiembrosService miembrosService;
 
 	
-	/*@RequestMapping(value = "/formulario", method = RequestMethod.GET)
+	@RequestMapping(value = "/formulario", method = RequestMethod.GET)
 	public String formulario(@ModelAttribute DatosDto datos, Model m){
 		//objetos vista y modelo
 	//	m.addAttribute("nombre", datos);
-		m.addAttribute("datos",datos);
+		//m.addAttribute("datos",datos);
+		List nombres= (List)miembrosService.getMiembrosmapper().getAllNombres();
+		m.addAttribute("nombres",nombres);
 		return "Formulario";
-	}*/
+	}
 	
-	@GetMapping("/formulario")
+	/*@GetMapping("/formulario")
 	public List getAllNombres() {
 		return (List)miembrosService.getMiembrosmapper().getAllNombres();		
-	}
+	}*/
 	
 	@RequestMapping(value = "/apellido", method = RequestMethod.POST)
 	public String welcome(@ModelAttribute DatosDto datos, Model m,Errors errors,HttpServletRequest request, HttpServletResponse response, BindingResult bindingResult){ 
@@ -61,6 +64,7 @@ public class HomeController {
 			//m.addAttribute("nombre", datos.getNombre());
 			m.addAttribute("datos",datos);
 			m.addAttribute("nombre",datos.getNombre());
+	
 			return "Formulario";
 		}else {
 			
