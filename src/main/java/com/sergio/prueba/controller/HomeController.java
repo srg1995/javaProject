@@ -1,22 +1,14 @@
 package com.sergio.prueba.controller;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sergio.prueba.dto.DatosDto;
 import com.sergio.prueba.web.ValidatorForm;
@@ -31,47 +23,74 @@ import com.sergio.pueba.service.MiembrosService;
 public class HomeController {
 
 	String PAG_FORMULARIO = "formulario";
+	
 	@Autowired
 	private MiembrosService miembrosService;
-
 	
-	@RequestMapping(value = "/formulario", method = RequestMethod.GET)
-	public String formulario(@ModelAttribute DatosDto datos, Model m){
-		//objetos vista y modelo
-	//	m.addAttribute("nombre", datos);
-		//m.addAttribute("datos",datos);
-		List nombres= (List)miembrosService.getMiembrosmapper().getAllNombres();
-		m.addAttribute("nombres",nombres);
-		return "Formulario";
+	
+	@RequestMapping(value = "/principal")
+	public String cargaInicial(){
+		return "index";
+	}
+
+	@RequestMapping(value = "/listado")
+	public String mostrarListado(Model m){ 
+		ArrayList lista = (ArrayList)miembrosService.getMiembrosmapper().getAllNombres();
+		m.addAttribute("lista",lista);
+		return "listado";
 	}
 	
-	/*@GetMapping("/formulario")
-	public List getAllNombres() {
-		return (List)miembrosService.getMiembrosmapper().getAllNombres();		
-	}*/
+	@RequestMapping(value = "/listadoUsuario")
+	public String mostrarUsuario(Model m){ 
+		ArrayList lista = (ArrayList)miembrosService.getMiembrosmapper().getAllNombres();
+		m.addAttribute("lista",lista);
+		return "listado";
+	}
 	
-	@RequestMapping(value = "/apellido", method = RequestMethod.POST)
-	public String welcome(@ModelAttribute DatosDto datos, Model m,Errors errors,HttpServletRequest request, HttpServletResponse response, BindingResult bindingResult){ 
-		
-
-		
-		errors = new BeanPropertyBindingResult(datos, "datos");
+	@RequestMapping(value = "/insertarUsuario")
+	public String insertaUsuario(@ModelAttribute DatosDto datos, Model m,Errors errors){ 
 		ValidationUtils.invokeValidator(new ValidatorForm(), datos, errors);
-		
 		if(errors.hasErrors()) {
-
-			System.out.println("entro");
-			//m.addAttribute("nombre", datos.getNombre());
-			m.addAttribute("datos",datos);
+			m.addAttribute("datosForm",datos);
 			m.addAttribute("nombre",datos.getNombre());
-	
-			return "Formulario";
+			String error = "errores en la validacion";
+			m.addAttribute("error", error);
+			return "formulario";
 		}else {
-			
-			System.out.println("fuera");
+			miembrosService.getMiembrosmapper().nuevoMiembro(datos);
 			m.addAttribute("nombre", datos.getNombre());
-			return "welcome";
-			
+			return "welcome";	
 		}
+	}
+	/*@RequestMapping(value = "/insertarUsuario", method = RequestMethod.POST)
+	public String actualizarUsuario(@ModelAttribute DatosDto datos, Model m){ 
+		return "insertarUsuario";
+	}
+	*/
+	@RequestMapping(value = "/eliminarUsuario")
+	public String eliminarUsuario(@ModelAttribute DatosDto datos, Model m){
+		System.out.println("dsdadasd");
+		String campoV = "";
+		if( datos.getNombre() != null || campoV.equals(datos.getNombre())){
+			System.out.println("ola"+datos.getNombre()+"ola");
+ 			if(miembrosService.isMiembro(datos.getNombre())){				
+				miembrosService.getMiembrosmapper().eliminarMiembro(datos.getNombre());
+				
+				return "exito";				
+			}
+			else {
+				m.addAttribute("datosForm",datos);
+				String error = "este usuario no existe";
+				m.addAttribute("error", error);
+				return "eliminarUsuario";
+			}
+		}
+		else {
+			m.addAttribute("datosForm",datos);
+			String vacio = "rellene el campo";
+			m.addAttribute("campoVacio", vacio);
+			return "eliminarUsuario";
+		}
+
 	}
 }

@@ -12,10 +12,20 @@ public class MiembrosService {
 		public MiembrosMapper getMiembrosmapper() {
 			return miembrosMapper;
 		}
+		
+		public boolean isMiembro(String nombre) {
+			if(null == miembrosMapper.buscarMiembro(nombre)) {
+				return false;
+			}else{				
+				return true;
+			}
+		}
 
 		public void setMiembrosMapper(MiembrosMapper miembrosMapper) {
 			this.miembrosMapper = miembrosMapper;
 		}
+		
+		
 		
 	}
 

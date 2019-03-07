@@ -16,5 +16,11 @@ public interface MiembrosMapper {
 	
 	public void nuevoMiembro(DatosDto datos);
 	
+	public void modificarMiembro(DatosDto datos);
+	
+	public void eliminarMiembro(String nombre);
+	
+	public DatosDto buscarMiembro(String nombre);
+	
 	
 }

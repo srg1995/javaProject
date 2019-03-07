@@ -1,35 +1,18 @@
 <html>
 <head>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 </head>
 <body>
-   <style>
-      .error {
-         color: #ff0000;
-      }
 
-      .errorblock {
-         color: #000;
-         background-color: #ffEEEE;
-         border: 3px solid #ff0000;
-         padding: 8px;
-         margin: 16px;
-      }
-   </style>
-   
-   
+fdsfd${error}
 
 
-<c:forEach var="campos" items="${nombres}">   
-    <tr>
-      <td>
-            ${campos.dni}    
-      </td>
-    </tr>
-  </c:forEach>
-  
-
+<form:form action="insertarUsuario" method="POST" modelAttribute="datosForm" path="datosForm">
+	<form:input id="nombre" path="nombre" />
+	<form:input id="dni" path="dni" />
+	<form:button value="enviar" >enviar</form:button>
+</form:form>
 </body>
-</html>
+</html> 

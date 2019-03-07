@@ -7,8 +7,15 @@
 	<select id="getAllNombres" resultType="com.sergio.prueba.dto.DatosDto">
 		SELECT * FROM miembros
 	</select>
+		<select id="buscarMiembro" resultType="com.sergio.prueba.dto.DatosDto">
+		SELECT * FROM miembros WHERE nombre=#{nombre}
+	</select>
 	
 	<insert id="nuevoMiembro" parameterType="com.sergio.prueba.dto.DatosDto">
 		INSERT INTO miembros(nombre, dni)VALUES (#{nombre},#{dni})
 	</insert>
+	
+	<delete id="eliminarMiembro" parameterType="com.sergio.prueba.dto.DatosDto">
+		DELETE FROM miembros WHERE nombre=#{nombre}
+	</delete>
 </mapper>
