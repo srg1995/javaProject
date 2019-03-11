@@ -1,6 +1,5 @@
-/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/prueba/controller/HomeController.java
-/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/prueba/dto/DatosDto.java
+/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/prueba/mapper/UsuariosMapper.java
+/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/prueba/controller/UsuariosController.java
+/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/prueba/dto/UsuariosDto.java
 /Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/prueba/web/ValidatorForm.java
-/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/pueba/service/MiembrosService.java
-/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/prueba/controller/PrincipalController.java
-/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/prueba/mapper/MiembrosMapper.java
+/Users/sergio/eclipse-workspace/pru2/src/main/java/com/sergio/pueba/service/UsuariosService.java

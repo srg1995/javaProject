@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	PROCESO EJECTADO CON EXITO
+	PROCESO EJECUTADO CON EXITO
 </body>
 </html>

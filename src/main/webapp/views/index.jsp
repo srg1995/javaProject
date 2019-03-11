@@ -21,7 +21,7 @@
 	<div><a href="/pru2/listado">Show list</a></div>
 	<div><a href="/pru2/listadoUsuario">Show user</a></div>
 	<div><a href="/pru2/insertarUsuario">Add user</a></div>
-	<div><a href="/pru2/actualizarUsuario">Update user</a></div>
+	<div><a href="/pru2/modificarUsuario">Update user</a></div>
 	<div><a href="/pru2/eliminarUsuario">Delete user</a></div>
 	
 </body>

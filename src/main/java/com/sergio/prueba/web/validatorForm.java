@@ -5,17 +5,17 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.sergio.prueba.dto.DatosDto;
+import com.sergio.prueba.dto.UsuariosDto;
 
 @Component
 public class ValidatorForm implements Validator{
 	
 	public boolean supports(Class clazz) {
-        return DatosDto.class.equals(clazz);
+        return UsuariosDto.class.equals(clazz);
     }
 
 
-	public void validarNombre(DatosDto datosDto){
+	public void validarNombre(UsuariosDto usuariosDto){
 
 	}
 
