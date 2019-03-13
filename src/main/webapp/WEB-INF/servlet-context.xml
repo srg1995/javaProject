@@ -23,4 +23,24 @@
 	
 	<context:component-scan base-package="com.sergio.prueba.controller" />
 	
+	
+	    
+<!-- 	<beans:bean class="com.sergio.prueba.controller.UsuariosController"> -->
+<!-- 		<beans:property name="insertarUsuario" value="insertarUsuario" /> -->
+<!-- 		<beans:property name="welcome" value="welcome" /> -->
+		
+		<!--  Map a validator--> 
+<!-- 		<beans:property name="validator"> -->
+<!-- 			<beans:bean class="com.sergio.prueba.web.ValidatorForm" /> -->
+<!-- 		</beans:property> -->
+<!-- 	</beans:bean> -->
+	
+	
+	<!-- Register the Customer.properties -->
+	<beans:bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<beans:property name="basename" value="classpath:i18n/validation" />
+		<beans:property name="useCodeAsDefaultMessage" value="true" />
+	</beans:bean>
+	
 </beans:beans>

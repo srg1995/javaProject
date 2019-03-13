@@ -11,7 +11,7 @@
 ${error}
 ${campoVacio}
 
-<form:form action="eliminarUsuario" method="POST" modelAttribute="datosForm" path="datosForm">
+<form:form action="eliminarUsuario" method="POST" modelAttribute="usuariosForm" path="usuariosForm">
 	<form:input id="nombre" path="nombre" />
 	<form:button value="enviar" >eliminar</form:button>
 </form:form>

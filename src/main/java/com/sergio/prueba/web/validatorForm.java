@@ -10,20 +10,15 @@ import com.sergio.prueba.dto.UsuariosDto;
 @Component
 public class ValidatorForm implements Validator{
 	
-	public boolean supports(Class clazz) {
-        return UsuariosDto.class.equals(clazz);
+	
+
+	public boolean supports(Class<?> paramClass) {
+        return UsuariosDto.class.equals(paramClass);
     }
-
-
-	public void validarNombre(UsuariosDto usuariosDto){
-
-	}
-
-
-	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "required.nombre","Field name is required.");
-	}
-
+ 
+    public void validate(Object obj, Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "valid.name");
+    }
 
 
 }
