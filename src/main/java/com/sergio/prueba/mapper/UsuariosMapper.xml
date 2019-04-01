@@ -18,4 +18,8 @@
 	<delete id="eliminarUsuario" parameterType="com.sergio.prueba.dto.UsuariosDto">
 		DELETE FROM usuarios WHERE nombre=#{nombre}
 	</delete>
+	
+	<update id="modificarUsuario" parameterType="map">
+		UPDATE usuarios SET nombre=#{nombre}, dni=#{dni} WHERE nombre=#{nombreAntiguo}
+	</update>
 </mapper>

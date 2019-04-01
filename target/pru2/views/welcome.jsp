@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>welcome, ${nombre}</h1>
+	<div><a href="/pru2/"><spring:message code="return"/></a></div>
 </body>
 </html>

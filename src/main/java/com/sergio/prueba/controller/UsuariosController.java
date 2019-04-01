@@ -2,19 +2,24 @@ package com.sergio.prueba.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sergio.prueba.dto.UsuariosDto;
+import com.sergio.prueba.service.UsuariosService;
 import com.sergio.prueba.web.ValidatorForm;
-import com.sergio.pueba.service.UsuariosService;
 
 
 @Controller
@@ -26,7 +31,7 @@ public class UsuariosController {
 	@Autowired
 	private UsuariosService usuariosService;
 	
-
+	protected String nombreSession = "";
 	
 	/**
 	 * mostrar todos los usuarios de la bbdd
@@ -125,14 +130,34 @@ public class UsuariosController {
 	 * @param m
 	 * @return
 	 */
-	@RequestMapping(value = "/modificarUsuario",method = RequestMethod.GET)
-	public String modificarUsuario(@ModelAttribute UsuariosDto usuarios,@RequestParam("usuario") String usuario, Model m){
-		System.out.println(usuario);
-		//System.out.println(request.getParameter("nombre"));
-		//m.addAttribute("error",request.getParameter("nombre"));
-		return "insertarUsuario";
+	@RequestMapping(value = "/modificarUsuario")
+	public String modificarUsuario(@ModelAttribute UsuariosDto usuario, Model m,Errors errors){	
+		
+		/*PARA CREAR UNA SESSION
+		 	HttpSession session = request.getSession();
+			String nombreAntiguo = (String)session.getAttribute("nombreAntiguo");
+		 * */
+		
+		if(!nombreSession.equals("")){
+		usuariosService.getUsuariosmapper().modificarUsuario(usuario.getNombre(),usuario.getDni(),nombreSession);
+		nombreSession="";
+		return "exito";
+		}
+		else {
+			m.addAttribute("actualizarUsuarios",usuario);
+		}
+		return "modificarUsuario";
 
 	}
 	
+	@RequestMapping(value = "/existeUsuario",method=RequestMethod.POST,produces = { MediaType.TEXT_PLAIN_VALUE })
+	public @ResponseBody String existeUsuario(HttpServletRequest request,@RequestBody String nombre,Model m) {
+		if(usuariosService.isUsuario(nombre)) {
+			nombreSession = nombre;
+			return "true";
+		}
+		return "false";
+		
+	}
 	
 }

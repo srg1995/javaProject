@@ -23,7 +23,7 @@
 		<property name="mapperInterface" value="com.sergio.prueba.mapper.UsuariosMapper"></property>
 	</bean>
  
-	<bean id="usuariosService" class="com.sergio.pueba.service.UsuariosService">
+	<bean id="usuariosService" class="com.sergio.prueba.service.UsuariosService">
 		<property name="usuariosMapper" ref="usuariosMapper"></property>
 	</bean>		
 </beans>

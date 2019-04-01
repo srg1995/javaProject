@@ -1,5 +1,5 @@
 com/sergio/prueba/mapper/UsuariosMapper.class
 com/sergio/prueba/controller/UsuariosController.class
-com/sergio/prueba/dto/UsuariosDto.class
 com/sergio/prueba/web/ValidatorForm.class
-com/sergio/pueba/service/UsuariosService.class
+com/sergio/prueba/service/UsuariosService.class
+com/sergio/prueba/dto/UsuariosDto.class

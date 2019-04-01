@@ -2,6 +2,8 @@ package com.sergio.prueba.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.sergio.prueba.dto.UsuariosDto;
 
 public interface UsuariosMapper {
@@ -22,7 +24,7 @@ public interface UsuariosMapper {
 	 * modifica un usuarios existente
 	 * @param usuarios
 	 */
-	public void modificarUsuario(UsuariosDto usuarios);
+	public void modificarUsuario(@Param("nombre") String nombre,@Param("dni") String dni,@Param("nombreAntiguo") String nombreAntiguo);
 	
 	/**
 	 * elimina un usuarios existente
