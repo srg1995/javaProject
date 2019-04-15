@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sergio.prueba.mapper.UsuariosMapper">
+	<cache />
+	<select id="getAllUsuarios" resultType="com.sergio.prueba.dto.UsuariosDto">
+		SELECT * FROM usuarios
+	</select>
+		<select id="buscarUsuario" resultType="com.sergio.prueba.dto.UsuariosDto">
+		SELECT * FROM usuarios WHERE nombre=#{nombre}
+	</select>
+	
+	<insert id="nuevoUsuario" parameterType="com.sergio.prueba.dto.UsuariosDto">
+		INSERT INTO usuarios(nombre, dni)VALUES (#{nombre},#{dni})
+	</insert>
+	
+	<delete id="eliminarUsuario" parameterType="com.sergio.prueba.dto.UsuariosDto">
+		DELETE FROM usuarios WHERE nombre=#{nombre}
+	</delete>
+	
+	<update id="modificarUsuario" parameterType="map">
+		UPDATE usuarios SET nombre=#{nombre}, dni=#{dni} WHERE nombre=#{nombreAntiguo}
+	</update>
+</mapper>
